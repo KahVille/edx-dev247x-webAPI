@@ -8,8 +8,15 @@ namespace WebServer.Controllers {
     public class ProductsController : Controller {
 
         [HttpGet]
-        public Product[] Get() {
-            return FakeData.Products.Values.ToArray();
+        public ActionResult Get() {
+            if (FakeData.Products != null)
+            {
+                return Ok(FakeData.Products.Values.ToArray());
+            }
+            else {
+                return NotFound();
+            }
+            
         }
 
         [HttpGet("{id}")]
