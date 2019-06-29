@@ -7,6 +7,9 @@ namespace WebServer.Controllers {
     [Route("api/[controller]")]
     public class ProductsController : Controller {
 
+
+        //if null is sent without correct response the client will receive a 500 Internal Server Error
+        //thats why use NotFound response which is correct.
         [HttpGet]
         public ActionResult Get() {
             if (FakeData.Products != null)
@@ -19,12 +22,14 @@ namespace WebServer.Controllers {
             
         }
 
+        //if null is sent without correct response the client will receive a 204 No Content
+        //thats why use NotFound response which is correct.
         [HttpGet("{id}")]
-        public Product Get(int id) {
+        public ActionResult Get(int id) {
             if (FakeData.Products.ContainsKey(id))
-                return FakeData.Products[id];
+                return Ok(FakeData.Products[id]);
             else
-                return null;
+                return NotFound();
         }
 
         [HttpGet("from/{low}/to/{high}")]
