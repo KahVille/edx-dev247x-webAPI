@@ -79,10 +79,15 @@ namespace WebServer.Controllers {
             }
         }
 
+        //client shoud recieve response whether the delete is successful or not
         [HttpDelete("{id}")]
-        public void Delete(int id) {
+        public ActionResult Delete(int id) {
             if (FakeData.Products.ContainsKey(id)) {
                 FakeData.Products.Remove(id);
+                return Ok();
+            }
+            else {
+                return NotFound();
             }
         }
     }
