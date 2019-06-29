@@ -32,11 +32,20 @@ namespace WebServer.Controllers {
                 return NotFound();
         }
 
+        //if null is sent without correct response the client will receive a 204 No Content
+        //thats why use NotFound response which is correct.
         [HttpGet("from/{low}/to/{high}")]
-        public Product[] Get(int low, int high) {
+        public ActionResult Get(int low, int high) {
             var products = FakeData.Products.Values
             .Where(p => p.Price >= low && p.Price <= high).ToArray();
-            return products;
+            if(products.Length > 0) { // LINQ guarantees the products won't be null
+                return Ok(products); 
+            }
+            else {
+                return NotFound();
+            }
+
+            
         }
 
         [HttpPost]
