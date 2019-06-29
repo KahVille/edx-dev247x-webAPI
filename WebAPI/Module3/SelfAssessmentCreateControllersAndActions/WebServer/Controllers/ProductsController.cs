@@ -5,17 +5,17 @@ using WebServer.Models;
 namespace WebServer.Controllers
 {
     [Route("api/[controller]")]
-    public class ProductController : Controller
+    public class ProductsController : Controller
     {
 
-
+        //ok
         //defaults to api/products
         [HttpGet]
         public ActionResult GetAllProducts()
         {
             if (FakeData.Products != null)
             {
-                return Ok(FakeData.Products.ToArray());
+                return Ok(FakeData.Products.Values.ToArray());
             }
             else
             {
@@ -36,7 +36,7 @@ namespace WebServer.Controllers
             }
         }
 
-
+        //ok
         //this function structure was needed to check from earlier examples
         [HttpGet("price/{low}/{high}")]
         public ActionResult GetProductsBetweenPrice(int low, int high)
@@ -69,7 +69,7 @@ namespace WebServer.Controllers
 
         }
 
-
+        //ok
         //this function structure was needed to check from earlier assignments
         [HttpPost]
         public ActionResult PostNewIttem([FromBody]Product newProduct)
@@ -105,7 +105,7 @@ namespace WebServer.Controllers
         //return responses ok and not found
         //check for not null
 
-        [HttpPut("{amount}")]
+        [HttpPut("raise/{amount}")]
         public ActionResult UpdateAllProductsByAmount(int amount)
         {
             if (FakeData.Products != null)
