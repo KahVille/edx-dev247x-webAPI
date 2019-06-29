@@ -43,7 +43,7 @@ namespace WebServer.Controllers
         }
 
          //defaults to Delete method
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public void DeleteProductByID(int id) {
             if (FakeData.Products.ContainsKey(id))
             {

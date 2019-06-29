@@ -8,9 +8,9 @@ namespace WebServer.Models
 
         static FakeData() {
             Products = new Dictionary<int,Product>();
-            Products.Add(0, new Product{ID = 0, Name = "Apple", Price = 55.55});
-            Products.Add(1, new Product {ID = 0, Name = "Bike", Price = 6.66});
-            Products.Add(2, new Product {ID = 0, Name = "Coffee", Price = 7.77});
+            Products.Add(0, new Product{ID = 0, Name = "Apple", Price = 5.55});
+            Products.Add(1, new Product {ID = 1, Name = "Bike", Price = 6.66});
+            Products.Add(2, new Product {ID = 2, Name = "Coffee", Price = 7.77});
         }
 
     }
