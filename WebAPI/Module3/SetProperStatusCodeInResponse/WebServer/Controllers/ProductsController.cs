@@ -54,7 +54,7 @@ namespace WebServer.Controllers {
         /*  
         pass url in created method
         url will be in the http response header
-        this is part of the concept of HATEOAS
+        this is the concept of HATEOAS
         */
         [HttpPost]
         public ActionResult Post([FromBody]Product product) {
@@ -63,13 +63,19 @@ namespace WebServer.Controllers {
             return Created($"api/products/{product.ID}",product); // contains the new ID
         }
 
+        //if no return value is provided the client will receive a 200 OK even if the update is unsuccessful 
+        //thats why apply NotFound response and ok responses accordingly.
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Product product) {
+        public ActionResult Put(int id, [FromBody]Product product) {
             if (FakeData.Products.ContainsKey(id)) {
                 var target = FakeData.Products[id];
                 target.ID = product.ID;
                 target.Name = product.Name;
                 target.Price = product.Price;
+                return Ok();
+            }
+            else {
+                return NotFound();
             }
         }
 
