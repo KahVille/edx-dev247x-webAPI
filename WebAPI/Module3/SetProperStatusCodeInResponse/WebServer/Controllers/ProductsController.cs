@@ -48,11 +48,19 @@ namespace WebServer.Controllers {
             
         }
 
+
+        //the best status code for post request of creation is 201 Created
+        //return created status code
+        /*  
+        pass url in created method
+        url will be in the http response header
+        this is part of the concept of HATEOAS
+        */
         [HttpPost]
-        public Product Post([FromBody]Product product) {
+        public ActionResult Post([FromBody]Product product) {
             product.ID = FakeData.Products.Keys.Max() + 1;
             FakeData.Products.Add(product.ID, product);
-            return product; // contains the new ID
+            return Created($"api/products/{product.ID}",product); // contains the new ID
         }
 
         [HttpPut("{id}")]
