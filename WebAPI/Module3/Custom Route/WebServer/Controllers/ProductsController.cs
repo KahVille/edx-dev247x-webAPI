@@ -4,11 +4,11 @@ using WebServer.Models;
 
 namespace WebServer.Controllers {
 
-    //[Route("api/[controller]")] 
-    [Route("api/inventories")]
+    [Route("api/[controller]")]  // [Route("api/inventories")]
     public class ProductsController : Controller {
 
-        [HttpGet] //[HttpGet("all")] //[HttpGet, Route("all")]
+        //[HttpGet] //[HttpGet("all")] 
+        [HttpGet, Route("all")]
         public Product[] Get() {
             return FakeData.Products.Values.ToArray();
         }
