@@ -2,6 +2,20 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using WebServer.Models;
 
+
+/*
+The frontend will send a GET request to api/products to get all products.
+The frontend will send a GET request to api/products/101 to get the product whose ID is 101
+The frontend will send a GET request to api/products/price/6/9 to get the products whose price is between 6 and 9.
+The frontend will send a DELETE request to api/products/101 to delete the product whose ID is 101
+The frontend will send a POST request to api/products to create a new product
+The frontend will send a PUT request to api/products/101 to update the product whose ID is 101
+The frontend will send PUT request to api/products/raise/3 to raise the price of all products by 3
+
+Please note, the actions should deal with the corner cases such as the product does not exist.
+
+ */
+
 namespace WebServer.Controllers
 {
     [Route("api/[controller]")]
@@ -23,6 +37,7 @@ namespace WebServer.Controllers
             }
         }
 
+        //ok
         [HttpGet("{id}")]
         public ActionResult GetProductByID(int id)
         {
@@ -54,6 +69,7 @@ namespace WebServer.Controllers
             }
         }
 
+        //ok
         [HttpDelete("{id}")]
         public ActionResult DeleteItemByID(int id)
         {
@@ -83,6 +99,7 @@ namespace WebServer.Controllers
             return Created($"api/products/{newProduct.ID}", newProduct);
         }
 
+        //ok
         [HttpPut("{id}")]
         public ActionResult UpdateProduct(int id, [FromBody]Product updatedProduct)
         {
@@ -105,26 +122,20 @@ namespace WebServer.Controllers
         //return responses ok and not found
         //check for not null
 
+        //ok
         [HttpPut("raise/{amount}")]
         public ActionResult UpdateAllProductsByAmount(int amount)
         {
-            if (FakeData.Products != null)
+            var allProducts = FakeData.Products.ToArray();
+            if (allProducts.Length > 0) //linq ensurs that product cant be null
             {
-                var allProducts = FakeData.Products.ToArray();
-                if (allProducts.Length > 0) //linq ensurs that product cant be null
+                //update price of every item;
+                for (int i = 0; i < allProducts.Length; i++)
                 {
-                    //update price of every item;
-                    for (int i = 0; i < allProducts.Length; i++)
-                    {
-                        var item = allProducts[i].Value;
-                        item.Price += amount;
-                    }
-                    return Ok();
+                    var item = allProducts[i].Value;
+                    item.Price += amount;
                 }
-                else
-                {
-                    return NotFound();
-                }
+                return Ok();
             }
             else
             {
