@@ -6,6 +6,13 @@ using SakilaWebserver.Models;
 using SakilaWebServer.Controllers;
 using Xunit;
 
+/*
+
+End-to-end testing is a methodology used to test whether the flow of an application is performing as designed from start to finish. 
+The purpose of carrying out end-to-end testing is to identify system dependencies and to ensure that the right information is passed between various components and systems. 
+
+ */
+
 
 namespace SakilaWebserver.Test
 {
