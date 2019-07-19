@@ -54,10 +54,9 @@ namespace SakilaWebServer.Controllers
 
         //PUT api/actors/101
         [HttpPut("{id}")]
-        public ActionResult PutUpdateActor(int id, [FromBody]Actor actor)
+        public ActionResult Put(int id, [FromBody]Actor actor)
         {
-
-            var target = dbContext.Actor.SingleOrDefault(a => actor.Actor_ID == id);
+            var target = dbContext.Actor.SingleOrDefault(a => a.Actor_ID == id);
             if (target != null && ModelState.IsValid)
             {
                 dbContext.Entry(target).CurrentValues.SetValues(actor);
