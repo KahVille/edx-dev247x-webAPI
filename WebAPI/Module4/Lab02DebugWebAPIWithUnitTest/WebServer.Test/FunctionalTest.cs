@@ -4,7 +4,8 @@ using WebServer.Models;
 
 namespace WebServer.Test
 {
-    public class FunctionalTest {
+    public class FunctionalTest
+    {
 
 
         //namspace of ProductsController could not be found
@@ -15,18 +16,24 @@ namespace WebServer.Test
             Assert.NotNull(controller);
         }
 
-        //Assert.NotNull() Failure of Repository.Products
-        [Fact]
-        public void RepositoryInitializationTest() {
-            Assert.NotNull(Repository.Products);
-            Assert.Equal(4,Repository.Products.Count);
+        //Assert.NotNull() Failure of Repository.Products at line 21
+        //Assert.Equal() Failure Expected: 4 Actual: 3 at line 22
+        //Assert.Equal() Failure Expected: 2 Actual: 3 at line 31
 
-            foreach(var id in new int[] {0,1,2,3,}) {
+        [Fact]
+        public void RepositoryInitializationTest()
+        {
+            Assert.NotNull(Repository.Products);
+            Assert.Equal(4, Repository.Products.Count);
+
+            foreach (var id in new int[] { 0, 1, 2, 3, })
+            {
                 Assert.True(Repository.Products.ContainsKey(id));
             }
 
-            foreach(var key in Repository.Products.Keys) {
-                Assert.Equal(key,Repository.Products[key].ID);
+            foreach (var key in Repository.Products.Keys)
+            {
+                Assert.Equal(key, Repository.Products[key].ID);
             }
         }
 
