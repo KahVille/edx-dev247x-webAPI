@@ -39,7 +39,7 @@ namespace WebServer.Test
         }
 
         [Fact]
-        void GetActionTest() 
+        public void GetActionTest() 
         {
             var controller = new ProductsController();
             Assert.IsType<OkObjectResult>(controller.Get());
@@ -47,6 +47,16 @@ namespace WebServer.Test
             {
                  Assert.IsType<OkObjectResult>(controller.Get(key));
             }
+        }
+
+        [Fact]
+        public void PostActionTest()
+        {
+            var controller = new ProductsController();
+            int oldCount = Repository.Products.Count;
+            var product = new Product {Name = "Test Product", Price=9.9};
+            Assert.IsType<CreatedResult>(controller.Post(product));
+            Assert.Equal(oldCount+ 1,Repository.Products.Count);
         }
 
 
