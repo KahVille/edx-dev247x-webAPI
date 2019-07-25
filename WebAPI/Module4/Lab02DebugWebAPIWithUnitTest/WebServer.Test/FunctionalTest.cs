@@ -1,6 +1,7 @@
 using Xunit;
 using WebServer.Controllers;
 using WebServer.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebServer.Test
 {
@@ -36,6 +37,18 @@ namespace WebServer.Test
                 Assert.Equal(key, Repository.Products[key].ID);
             }
         }
+
+        [Fact]
+        void GetActionTest() 
+        {
+            var controller = new ProductsController();
+            Assert.IsType<OkObjectResult>(controller.Get());
+            foreach (var key in Repository.Products.Keys)
+            {
+                 Assert.IsType<OkObjectResult>(controller.Get(key));
+            }
+        }
+
 
     }
 }
