@@ -25,7 +25,7 @@ namespace WebServer.Test
         public void RepositoryInitializationTest()
         {
             Assert.NotNull(Repository.Products);
-            Assert.Equal(4, Repository.Products.Count);
+            Assert.Equal(5, Repository.Products.Count);
 
             foreach (var id in new int[] { 0, 1, 2, 3, })
             {
@@ -49,6 +49,8 @@ namespace WebServer.Test
             }
         }
 
+        //Assert.Equal() Failure Expected: 5 Actual: 4
+        //the new product was not added to the list
         [Fact]
         public void PostActionTest()
         {
