@@ -26,10 +26,10 @@ namespace WebServer.Controllers {
             } else {
                 var maxExistingID = 0;
                 if (Repository.Products.Count > 0) {
-                    maxExistingID = Repository.Products.Keys.Max();
+                    maxExistingID = Repository.Products.Keys.Max() + 1;
                 }
 
-                product.ID = maxExistingID + 1;
+                product.ID = maxExistingID;
                 Repository.Products.Add(product.ID,product);
 
                 return Created($"api/products/{product.ID}", product);
@@ -41,7 +41,7 @@ namespace WebServer.Controllers {
             if (!this.ModelState.IsValid) {
                 return BadRequest();
             } else if (Repository.Products.ContainsKey(id)) {
-                product = Repository.Products[id];
+                Repository.Products[id] = product;
                 return Ok();
             } else {
                 return NotFound();
