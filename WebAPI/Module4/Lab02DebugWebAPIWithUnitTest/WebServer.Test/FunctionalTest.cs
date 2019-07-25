@@ -2,6 +2,7 @@ using Xunit;
 using WebServer.Controllers;
 using WebServer.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace WebServer.Test
 {
@@ -60,6 +61,32 @@ namespace WebServer.Test
             Assert.IsType<CreatedResult>(controller.Post(product));
             Assert.Equal(oldCount+ 1,Repository.Products.Count);
         }
+
+        [Fact]
+        public void DeleteActionTest()
+        {
+            var controller = new ProductsController();
+            int oldCount = Repository.Products.Count;
+            var maxKey = Repository.Products.Keys.Max();
+            Assert.IsType<OkResult>(controller.Delete(maxKey));
+            Assert.Equal(oldCount -1,Repository.Products.Count);
+        }
+
+
+        //test ran fine but seems like there is a bug
+        [Fact]
+        public void PutActionTest()
+        {
+            var controller = new ProductsController();
+            int oldCount = Repository.Products.Count;
+            var maxKey = Repository.Products.Keys.Max();
+            var product = Repository.Products[maxKey];
+            product.Name = "Changed";
+            Assert.IsType<OkResult>(controller.Put(maxKey,product));
+            Assert.Equal(oldCount,Repository.Products.Count);
+        }
+
+
 
 
     }
