@@ -40,13 +40,13 @@ namespace WebServer.Test
         }
 
         [Fact]
-        public void GetActionTest() 
+        public void GetActionTest()
         {
             var controller = new ProductsController();
             Assert.IsType<OkObjectResult>(controller.Get());
             foreach (var key in Repository.Products.Keys)
             {
-                 Assert.IsType<OkObjectResult>(controller.Get(key));
+                Assert.IsType<OkObjectResult>(controller.Get(key));
             }
         }
 
@@ -57,9 +57,9 @@ namespace WebServer.Test
         {
             var controller = new ProductsController();
             int oldCount = Repository.Products.Count;
-            var product = new Product {Name = "Test Product", Price=9.9};
+            var product = new Product { Name = "Test Product", Price = 9.9 };
             Assert.IsType<CreatedResult>(controller.Post(product));
-            Assert.Equal(oldCount+ 1,Repository.Products.Count);
+            Assert.Equal(oldCount + 1, Repository.Products.Count);
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace WebServer.Test
             int oldCount = Repository.Products.Count;
             var maxKey = Repository.Products.Keys.Max();
             Assert.IsType<OkResult>(controller.Delete(maxKey));
-            Assert.Equal(oldCount -1,Repository.Products.Count);
+            Assert.Equal(oldCount - 1, Repository.Products.Count);
         }
 
 
@@ -82,12 +82,8 @@ namespace WebServer.Test
             var maxKey = Repository.Products.Keys.Max();
             var product = Repository.Products[maxKey];
             product.Name = "Changed";
-            Assert.IsType<OkResult>(controller.Put(maxKey,product));
-            Assert.Equal(oldCount,Repository.Products.Count);
+            Assert.IsType<OkResult>(controller.Put(maxKey, product));
+            Assert.Equal(oldCount, Repository.Products.Count);
         }
-
-
-
-
     }
 }
