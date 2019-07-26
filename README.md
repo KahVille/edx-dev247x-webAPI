@@ -9,15 +9,15 @@ The master branch contains only the completed laboratory exercises and assignmen
 
 Below are topics that were covered and all the thing I learned during this course.
 
-#### Introduction to Web API:
+#### Module 1: Introduction to Web API
 - This module introduced the basic concepts of object Serlization and Deserilization in both C# and Javascript. 
 The JSON data format is needed in order to communicate between the client and the web server. It is one of the primary besides xml for data format that is used in wwww communication.
 
-#### REST and HTTP:
+#### Module 2: REST and HTTP
 - use of postman with webserver and how to create httprequests with postman and send them to server
 I was also introduced to the concept of how actions and controllers work via debug examples.
 
-#### Basic ASP.NET Core Web API:
+#### Module 3: Basic ASP.NET Core Web API
 - scaffold web applications using dotnet framework core.
 - create a controllers and actions for dotnet web api.
 - extract action parameters
@@ -25,7 +25,7 @@ I was also introduced to the concept of how actions and controllers work via deb
 - customize the route specific to the controller
 - set proper status codes in response to the dfifferent requests
 
-#### Advanced ASP.NET Core Web API:
+#### Module 4: Advanced ASP.NET Core Web API
 - Debug web apis with unit tests both endToEnd and functional tests were introduced. 
 - use Mysql database with dotnet web api by using data access layer.
 - make web api accessable across web site.
