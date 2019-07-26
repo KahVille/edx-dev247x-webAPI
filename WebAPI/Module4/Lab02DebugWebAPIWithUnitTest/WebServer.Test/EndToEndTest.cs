@@ -55,6 +55,16 @@ namespace WebServer.Test
             Assert.True(SameProduct(newProduct, product));
         }
 
+        [Fact]
+        public async void PutActionTest() {
+            var httpClient = GetHttpClient();
+            var product = Repository.Products[0];
+            var productJson = JsonConvert.SerializeObject(product);
+            var httpContent = new StringContent(productJson, Encoding.UTF8, "application/json");
+            var putResponse = await httpClient.PutAsync("api/products/0", httpContent);
+            Assert.True(putResponse.IsSuccessStatusCode);
+        }
+
 
     }
 }
