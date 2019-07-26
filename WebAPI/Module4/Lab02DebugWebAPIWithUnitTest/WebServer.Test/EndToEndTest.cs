@@ -1,6 +1,8 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using WebServer.Models;
+using Xunit;
+using Newtonsoft.Json;
 
 namespace WebServer.Test
 {
@@ -20,6 +22,19 @@ namespace WebServer.Test
         {
             return p1.ID == p2.ID && p1.Name == p2.Name && p1.Price == p2.Price;
         }
+
+        [Fact]
+        public async void GetActionTest()
+        {
+            var httpClient = GetHttpClient();
+            var allProductsResponse = await httpClient.GetAsync("api/products");
+            Assert.True(allProductsResponse.IsSuccessStatusCode);
+            var allProductsJson = await allProductsResponse.Content.ReadAsStringAsync();
+            var allProducts = JsonConvert.DeserializeObject<Product[]>(allProductsJson);
+            Assert.NotNull(allProducts);
+            Assert.True(allProducts.Length > 0);
+        }
+
 
     }
 }
