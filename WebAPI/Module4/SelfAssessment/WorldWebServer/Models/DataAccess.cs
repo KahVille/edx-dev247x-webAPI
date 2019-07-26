@@ -11,7 +11,7 @@ namespace WorldWebServer.Models
     }
 
     public class WorldDbContextFactory {
-        public WorldDbContext Create(string connectionString) {
+        public static WorldDbContext Create(string connectionString) {
             var optionsBuilder = new DbContextOptionsBuilder<WorldDbContext>();
             optionsBuilder.UseMySQL(connectionString);
             var dbContext = new WorldDbContext(optionsBuilder.Options);
