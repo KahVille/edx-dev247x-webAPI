@@ -3,6 +3,8 @@ using System.Net.Http.Headers;
 using WebServer.Models;
 using Xunit;
 using Newtonsoft.Json;
+using System.Linq;
+using System.Text;
 
 namespace WebServer.Test
 {
@@ -18,7 +20,7 @@ namespace WebServer.Test
             return httpClient;
         }
 
-        private bool SameProduct(Product p1, Product p2) 
+        private bool SameProduct(Product p1, Product p2)
         {
             return p1.ID == p2.ID && p1.Name == p2.Name && p1.Price == p2.Price;
         }
@@ -33,6 +35,24 @@ namespace WebServer.Test
             var allProducts = JsonConvert.DeserializeObject<Product[]>(allProductsJson);
             Assert.NotNull(allProducts);
             Assert.True(allProducts.Length > 0);
+        }
+
+        [Fact]
+        public async void PostActionTest()
+        {
+            int oldCount = Repository.Products.Count;
+            int oldMaxID = Repository.Products.Keys.Max();
+
+            var httpClient = GetHttpClient();
+            var product = new Product { Name = "Test Product", Price = 9.9 };
+            var productJson = JsonConvert.SerializeObject(product);
+            var httpContent = new StringContent(productJson, Encoding.UTF8, "application/json");
+            var newProductReponse = await httpClient.PostAsync("api/products", httpContent);
+            Assert.True(newProductReponse.IsSuccessStatusCode);
+            var newProductJson = await newProductReponse.Content.ReadAsStringAsync();
+            var newProduct = JsonConvert.DeserializeObject<Product>(newProductJson);
+            product.ID = oldMaxID + 1;
+            Assert.True(SameProduct(newProduct, product));
         }
 
 
