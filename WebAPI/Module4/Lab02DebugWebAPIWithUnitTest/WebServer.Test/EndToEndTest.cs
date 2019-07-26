@@ -65,6 +65,16 @@ namespace WebServer.Test
             Assert.True(putResponse.IsSuccessStatusCode);
         }
 
+        //the product does not exits
+        [Fact]
+        public async void DeleteActionTest() {
+            var httpClient = GetHttpClient();
+            var deleteResponse = await httpClient.DeleteAsync("api/products/4");
+            Assert.True(deleteResponse.IsSuccessStatusCode);
+            deleteResponse = await httpClient.DeleteAsync("api/products/101");
+            Assert.False(deleteResponse.IsSuccessStatusCode);
+        }
+
 
     }
 }
