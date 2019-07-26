@@ -1,0 +1,25 @@
+,,
+Timetable Build Web APIs using ASP.NET,,
+,,
+total,41,hours
+Day,Hour,Description
+26.06.2019,1,"Module 0, Module 1 Lesson 1, Introduction to course"
+26.06.2019,3,"Module 1, Introduction to web api, Lab Setup, LAB01"
+26.06.2019,2,"Module1, Lab assignments,  Serilization Deserilization"
+27.06.2019,3,"Module1, Lab Self assesments and checks, Serilization Deserilization, Modul1 0 and 1 completed"
+27.06.2019,2,"Module2, REST, RESTFul theory reading and self checks"
+28.06.2019,2,"Module 2, Labs assignments and Module 3, theory reading about asp.net core webapi implementation"
+28.06.2019,1,"Module3, Theary reading about Controllers, Actions and parameters, model binding and Action Serilization"
+29.06.2019,2,"Module3, Lab01 completed, Controllers and Actions"
+29.06.2019,1,"Module3,Lab02, Working with routes, Task2, customize routes, pattern match, customize action and controller routes"
+29.06.2019,2,"Module3, Lab3 and Lab4, Extract Action parameters and module binding"
+29.06.2019,1,"Module3,Lab5, Response codes for actions"
+29.06.2019,3,"Module3,SelfAssesment, Project setup, Products controller setup, GetAllProducts,FilterProducts and PostNewProduct works, TODO: Update single Product and increase prices on all products by amount"
+01.07.2019,2,"Module3, SelfAssesment fills all the front-end requirements"
+16.07.2019,3,Introduction to Entity Framework Core and c# web api that was connected to mysql database and utilized by web requests
+16.07.2019,2,Introduction to web api Testing with xUnit
+21.07.2019,2,"Module4, Set up of Lab02 and tested against first error"
+24.07.2019,1,"Module4,Tested Rpositoryinit test"
+25.07.2019,2,"Module4, Tested against Get, Post, Put and Delete Actions - functional tests completed."
+26.07.2019,2,"Module4, lab02, completed end to end tests for Get, Post(only works once for some reason) Put and Delete(does not work because incorrect id was given as stated in the example code)"
+26.07.2019,4,"Module4, Final Project, Post Survey, project documentation and clean up."
