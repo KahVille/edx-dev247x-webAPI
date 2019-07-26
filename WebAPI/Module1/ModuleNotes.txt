@@ -1,0 +1,3 @@
+This module introduced the basic concepts of object Serlization and Deserilization in both C# and Javascript. 
+The JSON data format is needed in order to communicate between the client and the web server. It is one of the primary besides xml for data format that is used in wwww communication.
+ 

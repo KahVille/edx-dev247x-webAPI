@@ -1,0 +1,5 @@
+In module number 4, I learned how to:
+
+- Debug web apis with unit tests both endToEnd and functional tests were introduced. 
+- use Mysql database with dotnet web api by using data access layer.
+- make web api accessable across web site.

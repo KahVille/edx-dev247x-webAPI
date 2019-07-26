@@ -1,0 +1,8 @@
+In module number 3, I learned how to:
+
+- scaffold web applications using dotnet framework core.
+- create a controllers and actions for dotnet web api.
+- extract action parameters
+- create entities also known as data models for the web api
+- customize the route specific to the controller
+- set proper status codes in response to the dfifferent requests

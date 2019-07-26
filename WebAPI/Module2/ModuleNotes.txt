@@ -1,0 +1,5 @@
+In module number 2, I learned how to:
+
+-use of postman with webserver and how to create httprequests with postman and send them to server 
+
+I was also introduced to the concept of how actions and controllers work via debug examples.
