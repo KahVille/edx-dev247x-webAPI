@@ -5,6 +5,21 @@ This repository contains lab exercises and assignments for the Build Web APIs us
 
 The master branch contains only the completed laboratory exercises and assignments. Please check out the development brach for overall progression towards the course completion.
 
+Run each application with these commands in terminal while in root folder of that project:
+
+#### Restore project and depencies
+```
+dotnet restore
+```
+#### Build project
+```
+dotnet build
+```
+#### Run the project
+```
+dotnet run
+```
+
 ### NOTE: Course Completed ###
 
 Below are topics that were covered and all the thing I learned during this course.
